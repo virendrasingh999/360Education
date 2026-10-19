@@ -3,6 +3,7 @@ import "./globals.css";
 import TopBar from "@/components/layout/TopBar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollAnimations from "@/components/layout/ScrollAnimations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <ScrollAnimations />
         <TopBar />
         <Navbar />
         <div className="flex-1">{children}</div>

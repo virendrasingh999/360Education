@@ -1,115 +1,62 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Button from "@/components/common/Button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
 export default function Hero() {
-  const slides = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
-      title: "Sapno Ko Direction Do",
-      subtitle: "Career Ko 360° Solution Do",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=85",
-      title: "Shape Your Future",
-      subtitle: "Expert Guidance for Your Career",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=85",
-      title: "Achieve Your Goals",
-      subtitle: "Quality Education for Success",
-    },
-  ];
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
   return (
-    <section className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="space-y-6">
-            <span className="inline-block text-[#E9B746] font-semibold text-sm tracking-wider uppercase">
-              YOUR FUTURE STARTS HERE
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              {slides[currentSlide].title},{" "}
-              <span className="text-[#E9B746]">
-                {slides[currentSlide].subtitle}
-              </span>
+    <section id="home" data-aos="fade-up" className="relative overflow-hidden text-white bg-[radial-gradient(ellipse_at_83%_22%,#31577b_0,transparent_31%),radial-gradient(ellipse_at_90%_100%,#15554f_0,transparent_35%),linear-gradient(120deg,#07142c,#12284a_64%,#102f3e)] py-12 sm:py-[76px]">
+      <div className="absolute right-[-170px] bottom-[-310px] w-[600px] h-[600px] border border-[#ffffff17] rounded-full shadow-[0_0_0_55px_#ffffff05,0_0_0_110px_#ffffff04]"></div>
+
+      <div className="max-w-[1180px] mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
+          <div>
+            <div className="flex items-center gap-2.5 text-[11px] font-[900] tracking-[2px] uppercase text-[#f5d990] mb-4">
+              <span className="h-[2px] w-[30px] bg-[#e8bd61]"></span>
+              Your future starts here
+            </div>
+            <h1 className="text-[clamp(34px,8vw,66px)] font-bold text-center tracking-[-2px] leading-[1.05] my-[18px]">
+              Sapno Ko Direction Do, Career Ko 360° Solution Do.
             </h1>
-            <p className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed">
-              Make confident education and career decisions with personalised
-              counselling, admission assistance, academic coaching and open &
-              distance education guidance.
+            <p className="max-w-[610px] mx-auto lg:mx-0 text-center lg:text-left text-[#d7e0ed] text-[16px] mb-6">
+              Personalised education and career guidance for regular admissions, online and distance learning, open schooling and academic coaching — all in one place in Saharanpur.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-              <Button href="/contact" className="!py-3 !px-6 text-base">
-                Get Free Guidance ↗
-              </Button>
-              <Button
-                variant="secondary"
-                href="/services"
-                className="!py-3 !px-6 text-base"
+            <div className="flex justify-center lg:justify-start gap-3 flex-wrap">
+              <a
+                href="#contact"
+                className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-[850] border border-transparent bg-gradient-to-br from-[#f5d990] to-[#e8bd61] text-[#16213a] shadow-[0_9px_25px_rgba(214,169,65,0.19)] hover:-translate-y-[2px] transition-transform cursor-pointer"
               >
-                Explore Our Services
-              </Button>
+                Start Your Admission Enquiry ↗
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-[850] border border-[#ffffff70] text-white bg-[#ffffff08] hover:bg-[#ffffff15] transition-colors cursor-pointer"
+              >
+                Find Your Course
+              </a>
+            </div>
+            <div className="text-center lg:text-left text-[12px] text-[#b9c8dd] mt-[22px]">
+              Clear guidance · Course options · Support with next steps
             </div>
           </div>
 
-          <div className="relative order-first lg:order-last mb-8 lg:mb-0">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={slides[currentSlide].image}
-                alt="Education"
-                className="w-full h-64 sm:h-80 md:h-96 object-cover transition-opacity duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/60 to-transparent"></div>
+          <div className="min-h-[320px] sm:min-h-[400px] grid place-items-center relative">
+            <div className="w-[min(390px,85%)] aspect-square border border-[#ffffff2a] rounded-full grid place-items-center bg-[radial-gradient(circle,#ffffff15,transparent_68%)] relative">
+              <div className="absolute inset-[28px] border border-[#ffffff20] rounded-full"></div>
+              <div className="absolute inset-[60px] border border-[#ffffff20] rounded-full"></div>
 
-              <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-              >
-                <ChevronLeft className="w-6 h-6 text-[#0B1730]" />
-              </button>
+              <div className="relative z-2 bg-white w-[min(56vw,215px)] h-[min(56vw,215px)] rounded-[32px] p-3 grid place-items-center shadow-[0_25px_60px_rgba(0,0,0,0.33)] rotate-[-3deg]">
+                <img src="/logo.jpeg" alt="360 Education & Consultancy Logo" className="w-full h-full object-contain rounded-[24px]" />
+              </div>
 
-              <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-              >
-                <ChevronRight className="w-6 h-6 text-[#0B1730]" />
-              </button>
+              <div className="absolute z-3 bg-white text-[#091831] rounded-[13px] px-4 py-3 shadow-[0_15px_35px_rgba(0,0,0,0.2)] text-[12px] font-[850] top-8 right-4">
+                <span>500+ Students</span>
+                <span className="block text-[#667685] font-normal text-[10px]">Guided Successfully</span>
+              </div>
 
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      index === currentSlide
-                        ? "bg-[#E9B746] w-8"
-                        : "bg-white/50 hover:bg-white/80"
-                    }`}
-                  />
-                ))}
+              <div className="absolute z-3 bg-white text-[#091831] rounded-[13px] px-4 py-3 shadow-[0_15px_35px_rgba(0,0,0,0.2)] text-[12px] font-[850] top-[95px] right-[-20px]">
+                <span>Expert</span>
+                <span className="block text-[#667685] font-normal text-[10px]">Career Counsellors</span>
+              </div>
+
+              <div className="absolute z-3 bg-white text-[#091831] rounded-[13px] px-4 py-3 shadow-[0_15px_35px_rgba(0,0,0,0.2)] text-[12px] font-[850] bottom-5 left-8">
+                <span>100%</span>
+                <span className="block text-[#667685] font-normal text-[10px]">Personalised</span>
               </div>
             </div>
           </div>

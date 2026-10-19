@@ -1,51 +1,39 @@
-import SectionTitle from '@/components/common/SectionTitle';
-
 export default function Universities() {
   const institutions = [
-    { name: 'Chandigarh University Online', category: 'ONLINE LEARNING' },
-    { name: 'Subharti University', category: 'UNIVERSITY OPTIONS' },
-    { name: 'Kurukshetra University Online', category: 'ONLINE LEARNING' },
-    { name: 'Mangalayatan University Online', category: 'ONLINE LEARNING' },
-    { name: 'Graphic Era Online', category: 'ONLINE LEARNING' },
-    { name: 'NIOS', category: 'OPEN SCHOOLING' },
-    { name: 'BOSSE', category: 'OPEN SCHOOLING' },
-    { name: 'More Options Available', category: 'PERSONAL GUIDANCE' },
+    { name: 'Chandigarh University Online', category: 'Online programmes' },
+    { name: 'Swami Vivekanand Subharti University', category: 'University option' },
+    { name: 'Kurukshetra University Online', category: 'Online programmes' },
+    { name: 'Mangalayatan University Online', category: 'Online programmes' },
+    { name: 'Graphic Era Online', category: 'Online programmes' },
+    { name: 'NIOS', category: 'Open schooling' },
+    { name: 'BOSSE', category: 'Open schooling' },
+    { name: 'Ask for course-specific choices', category: 'Need more options?' },
   ];
 
   return (
-    <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-teal-50">
-      <div className="max-w-7xl mx-auto">
-        <SectionTitle
-          eyebrow="UNIVERSITY OPTIONS"
-          heading="Explore university options"
-          description="We help learners understand available institutions and programme routes. Final admission depends on each institution's current rules and eligibility."
-        />
+    <section id="universities" data-aos="fade-up" className="py-12 sm:py-[78px] bg-white">
+      <div className="max-w-[1180px] mx-auto px-4">
+        <div className="text-center max-w-[730px] mx-auto mb-10">
+          <div className="text-[11px] uppercase tracking-[1.8px] text-[#16836a] font-[900]">University directory</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#091831] tracking-[-1px] leading-[1.12] mt-2.5 mb-3">Explore institution options</h2>
+          <p className="text-[#647189]">Ask us to compare programme availability, study mode and current admission requirements.</p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {institutions.map((institution, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#10b981]/50 group transform hover:-translate-y-2"
+              className="border border-[#e3e8f0] rounded-[14px] p-5 min-h-[102px] flex flex-col justify-center items-center text-center bg-white"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-[#10b981] to-[#059669] rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                </svg>
-              </div>
-              <span className="inline-block text-[#10b981] text-xs font-semibold tracking-wider uppercase mb-2">
-                {institution.category}
-              </span>
-              <h3 className="text-[#0B1730] font-bold text-lg group-hover:text-[#10b981] transition-colors">{institution.name}</h3>
+              <small className="text-[#16836a] uppercase tracking-[1px] text-[9px] font-[900]">{institution.category}</small>
+              <strong className="text-[13px] text-[#33425a] mt-1">{institution.name}</strong>
             </div>
           ))}
         </div>
 
-        <div className="bg-gradient-to-r from-[#10b981]/10 to-[#059669]/10 rounded-2xl p-6 border border-[#10b981]/20">
-          <p className="text-[#475569] text-sm leading-relaxed text-center">
-            <strong className="text-[#10b981]">Important:</strong> Verify recognition, programme approval, fees and admission dates directly with the relevant institution before enrolling. We provide guidance to help you understand options, but final admission decisions and eligibility are determined by each institution.
-          </p>
-        </div>
+        <p className="text-[11px] text-[#7a8597] text-center mt-4">
+          Names are provided for information and counselling, not as a guarantee of partnership or admission. Verify official recognition, programme approvals, fees and current admission dates directly with the institution.
+        </p>
       </div>
     </section>
   );

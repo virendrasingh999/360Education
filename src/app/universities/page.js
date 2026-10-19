@@ -47,7 +47,7 @@ export default function UniversitiesPage() {
 
   return (
     <div className="flex-1">
-      <section className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24 px-4">
+      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">University Options</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -56,7 +56,7 @@ export default function UniversitiesPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4 bg-white">
+      <section data-aos="fade-up" className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <SectionTitle
             eyebrow="INSTITUTIONS"

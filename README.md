@@ -18,6 +18,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
+## Contact form email setup
+
+The contact form sends enquiries through EmailJS. Create an EmailJS email service and template, then configure the template to deliver to your team's inbox. The template can use `{{from_name}}`, `{{reply_to}}`, `{{phone}}`, `{{service}}`, `{{qualification}}`, `{{course}}`, `{{mode}}`, `{{university}}`, and `{{message}}`.
+
+Copy `.env.example` to `.env.local` and fill in the EmailJS service ID, template ID, and public key from your EmailJS account. Restart the Next.js development server after changing environment variables. Add the same variables to your deployment environment before publishing.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

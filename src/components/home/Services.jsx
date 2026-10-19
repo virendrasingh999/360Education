@@ -1,89 +1,82 @@
-import SectionTitle from '@/components/common/SectionTitle';
-import { Compass, FileText, Globe, BookOpen, Users, MessageSquare } from 'lucide-react';
-import Link from 'next/link';
-
 export default function Services() {
   const services = [
     {
-      icon: Compass,
-      title: 'Career Guidance',
-      description: 'Explore career options aligned with your interests, skills and goals through personalised counselling sessions.',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop',
+      icon: '🏫',
+      title: 'Regular Education Admission',
+      description: 'Guidance for students exploring school, college and university admissions through regular, campus-based study.',
+      features: ['UG and PG course options', 'College and university comparisons', 'Eligibility and application guidance', 'Document checklist support'],
+      interest: 'Regular Education Admission',
     },
     {
-      icon: FileText,
-      title: 'Admission Assistance',
-      description: 'Get support with application processes, documentation and understanding admission requirements for various institutions.',
-      image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop',
+      icon: '🌐',
+      title: 'Online & Distance Education',
+      description: 'Explore flexible programmes for learners who need online or distance-learning formats.',
+      features: ['Course and institution options', 'Programme mode comparisons', 'Admission process guidance'],
+      interest: 'Online / Distance Education',
     },
     {
-      icon: Globe,
-      title: 'Online Education Guidance',
-      description: 'Learn about online learning opportunities, programme structures and how to balance education with other commitments.',
-      image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400&h=250&fit=crop',
+      icon: '📗',
+      title: 'NIOS & BOSSE Open Schooling',
+      description: 'Information and guidance for eligible learners considering open-board education.',
+      features: ['Class 10 and 12 pathways', 'Subject and eligibility guidance', 'Application process information'],
+      interest: 'NIOS / BOSSE Open Schooling',
     },
     {
-      icon: BookOpen,
-      title: 'Distance Education Guidance',
-      description: 'Understand distance learning programmes, their recognition and suitability for your educational needs.',
-      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=250&fit=crop',
+      icon: '🧭',
+      title: 'Career Guidance & Counselling',
+      description: 'Discuss interests, qualifications and possible next steps before making an education decision.',
+      features: ['Stream and course selection', 'Career pathway exploration', 'Personalised guidance'],
+      interest: 'Career Counselling',
     },
     {
-      icon: Users,
-      title: 'Open Schooling Guidance',
-      description: 'Get information about open schooling options like NIOS and BOSSE for flexible learning pathways.',
-      image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=250&fit=crop',
+      icon: '📚',
+      title: 'Academic Coaching',
+      description: 'Academic support options for school students in selected subjects and classes.',
+      features: ['Classes 5–8: all subjects', 'Classes 9–10: Maths, Science, English, SST', 'Classes 11–12: selected Commerce and other subjects'],
+      interest: 'Academic Coaching',
     },
     {
-      icon: MessageSquare,
-      title: 'Academic Counselling',
-      description: 'Receive ongoing support and guidance throughout your educational journey to help you stay on track.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=250&fit=crop',
+      icon: '🏛️',
+      title: 'Competitive Exam Guidance',
+      description: 'Explore preparation pathways for government and competitive examinations.',
+      features: ['Civil Services', 'Banking, SSC and Railways', 'Defence and government job exams'],
+      interest: 'Competitive Exam Guidance',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
-      <div className="max-w-7xl mx-auto">
-        <SectionTitle
-          eyebrow="OUR SERVICES"
-          heading="How We Can Help You"
-          description="We offer comprehensive guidance and support to help you navigate your educational journey with confidence."
-        />
+    <section id="admissions" data-aos="fade-up" className="py-12 sm:py-[78px] bg-[#f5f7fb]">
+      <div className="max-w-[1180px] mx-auto px-4">
+        <div className="text-center max-w-[730px] mx-auto mb-10">
+          <div className="text-[11px] uppercase tracking-[1.8px] text-[#16836a] font-[900]">Our services</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#091831] tracking-[-1px] leading-[1.12] mt-2.5 mb-3">Choose the support you need</h2>
+          <p className="text-[#647189]">Start with the education route that fits your goals. We can help you understand options, requirements and application steps.</p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[17px]">
           {services.map((service, index) => (
-            <div
+            <article
               key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#8b5cf6]/50 group transform hover:-translate-y-2"
+              className="bg-white border border-[#e4e9f1] rounded-[18px] p-6 shadow-[0_8px_24px_rgba(7,24,49,0.05)] transition-all duration-200 flex flex-col hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(7,24,49,0.07)] hover:border-[#d8c18a]"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1730]/70 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#3b82f6] to-[#8b5cf6] rounded-xl flex items-center justify-center shadow-lg">
-                    <service.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
+              <div className="h-12 w-12 rounded-[14px] bg-[#fbf3df] text-[#74520c] grid place-items-center text-[22px] mb-4">
+                {service.icon}
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-[#0B1730] mb-3 group-hover:text-[#3b82f6] transition-colors">{service.title}</h3>
-                <p className="text-[#52627A] mb-5 leading-relaxed line-clamp-3">{service.description}</p>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center text-[#3b82f6] font-semibold hover:text-[#8b5cf6] transition-colors group/link"
-                >
-                  Learn More
-                  <svg className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+              <h3 className="text-[18px] text-[#091831] mb-2">{service.title}</h3>
+              <p className="text-[13px] text-[#647189] mb-3">{service.description}</p>
+              <ul className="pl-[17px] mb-4 text-[#4c5b72] text-[12px] flex-1">
+                {service.features.map((feature, i) => (
+                  <li key={i} className="my-1">• {feature}</li>
+                ))}
+              </ul>
+              <a
+                href="#contact"
+                data-interest={service.interest}
+                className="mt-auto text-[12px] text-[#89631a] font-[900] inline-flex items-center gap-1.5 hover:underline"
+              >
+                Enquire for {service.title.split(' ').slice(0, 2).join(' ')} ↗
+              </a>
+            </article>
           ))}
         </div>
       </div>
