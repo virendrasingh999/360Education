@@ -50,9 +50,15 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-8 items-start">
             <div className="flex flex-col items-center text-center">
-              <div className="w-[180px] h-[180px] bg-gradient-to-br from-[#091831] to-[#132a4d] rounded-full flex items-center justify-center mb-4 shadow-lg">
-                <span className="text-[#e8bd61] font-bold text-5xl">SV</span>
-              </div>
+              <Image
+                src="/Founder.jpg"
+                alt="Saurabh Verma, Founder of 360 Education & Consultancy"
+                width={1122}
+                height={1402}
+                quality={100}
+                sizes="240px"
+                className="w-[240px] h-[300px] rounded object-cover mb-4 shadow-lg"
+              />
               <h3 className="text-[20px] text-[#091831] font-bold">Saurabh Verma</h3>
               <p className="text-[#16836a] text-[13px] font-semibold mb-2">Founder & Chief Admission Counsellor</p>
               <p className="text-[#647189] text-[12px]">360 Education & Consultancy</p>

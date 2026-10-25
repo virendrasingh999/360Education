@@ -55,7 +55,7 @@ export default function Privacy() {
               <div className="min-w-0 flex-1 break-words">
                 <h3 className="text-[#091831] mb-2 text-[15px] font-semibold">Your choices and requests</h3>
                 <p className="break-words text-[13px] leading-relaxed text-[#5b687d] [overflow-wrap:anywhere]">
-                  You can choose which optional details to share. To ask about, correct or request deletion of information you have sent to us, contact <a href="mailto:360education.consultancy@gmail.com" className="break-all text-[#091831] underline">360education.consultancy@gmail.com</a>. We may need to retain some information where required for legitimate or legal purposes.
+                  You can choose which optional details to share. To ask about, correct or request deletion of information you have sent to us, contact <a href="mailto:saurabhv730@gmail.com" className="break-all text-[#091831] underline">saurabhv730@gmail.com</a>. We may need to retain some information where required for legitimate or legal purposes.
                 </p>
               </div>
             </li>
@@ -86,7 +86,7 @@ export default function Privacy() {
             <div className="min-w-0 flex-1 break-words">
               <h3 className="text-[#091831] mb-2 text-[15px] font-semibold">Questions or privacy requests</h3>
               <p className="break-words text-[13px] leading-relaxed text-[#5b687d] [overflow-wrap:anywhere]">
-                Contact 360 Education & Consultancy at <a href="mailto:360education.consultancy@gmail.com" className="break-all text-[#091831] underline">360education.consultancy@gmail.com</a> or call <a href="tel:+919536385100" className="whitespace-nowrap text-[#091831] underline">+91 9536385100</a>.
+                Contact 360 Education & Consultancy at <a href="mailto:saurabhv730@gmail.com" className="break-all text-[#091831] underline">saurabhv730@gmail.com</a> or call <a href="tel:+919536385100" className="whitespace-nowrap text-[#091831] underline">+91 9536385100</a>.
               </p>
             </div>
           </div>

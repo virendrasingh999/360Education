@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Button from '@/components/common/Button';
 import { Check } from 'lucide-react';
 
@@ -43,9 +44,15 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-[#0B1730] mb-8 text-center">Meet Our Founder</h2>
             <div className="bg-[#F5F7FA] rounded-2xl p-8 text-center">
-              <div className="w-24 h-24 bg-[#0B1730] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-[#E9B746] font-bold text-3xl">SV</span>
-              </div>
+              <Image
+                src="/Founder.jpg"
+                alt="Saurabh Verma, Founder of 360 Education & Consultancy"
+                width={1122}
+                height={1402}
+                quality={100}
+                sizes="160px"
+                className="w-40 h-40 rounded-2xl object-cover mx-auto mb-4 shadow-md"
+              />
               <h3 className="text-2xl font-bold text-[#0B1730] mb-2">Saurabh Verma</h3>
               <p className="text-[#087F75] font-medium mb-4">Founder & Chief Admission Counsellor</p>
               <p className="text-[#52627A] leading-relaxed">

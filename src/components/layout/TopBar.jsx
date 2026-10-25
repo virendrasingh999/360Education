@@ -9,7 +9,7 @@ export default function TopBar() {
           Serving students across India
         </span>
         <span>
-          Call / WhatsApp: <a href="tel:+919536385100" className="hover:text-[#e8bd61]">+91 9536385100</a> · <a href="mailto:360education.consultancy@gmail.com" className="hover:text-[#e8bd61]">Email us</a>
+          Call / WhatsApp: <a href="tel:+919536385100" className="hover:text-[#e8bd61]">+91 9536385100</a> · <a href="mailto:saurabhv730@gmail.com" className="hover:text-[#e8bd61]">Email us</a>
         </span>
       </div>
     </div>

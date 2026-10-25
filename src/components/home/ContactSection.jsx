@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { FormControl, FormHelperText, MenuItem, Select } from '@mui/material';
+import { Alert, FormControl, FormHelperText, MenuItem, Select, Snackbar } from '@mui/material';
 import { ArrowRight, Compass, GraduationCap, Globe2, Headset, Plane, ShieldCheck } from 'lucide-react';
 
 const selectStyles = {
@@ -39,6 +39,7 @@ export default function ContactSection() {
   const [errors, setErrors] = useState({});
   const [submissionStatus, setSubmissionStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccessToastOpen, setIsSuccessToastOpen] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -109,7 +110,8 @@ export default function ContactSection() {
         university: '',
         message: '',
       });
-      setSubmissionStatus('Thanks! Your enquiry has been sent. We will get back to you soon.');
+      setSubmissionStatus('');
+      setIsSuccessToastOpen(true);
     } catch (error) {
       console.error('EmailJS enquiry submission failed:', error);
       setSubmissionStatus('We could not send your enquiry. Please try again or contact us by phone.');
@@ -128,9 +130,18 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" data-aos="fade-up" className="overflow-hidden bg-gray-50 py-10 sm:py-16">
+    <section id="contact" data-aos="fade-up" className="overflow-hidden bg-gray-50 py-2 sm:py-2">
       <div className="mx-auto max-w-[1440px] px-3 sm:px-5 lg:px-6">
-        <div className="grid grid-cols-1 overflow-hidden rounded-[22px] border border-[#dce7f4] bg-white shadow-[0_20px_60px_rgba(8,38,79,0.14)] md:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)]">
+        <div className="mb-5 min-w-0 px-2 pt-2 text-center sm:px-7 sm:pt-3 lg:px-8">
+          <h2 className="text-2xl font-bold leading-tight text-[#0b1730] sm:text-3xl lg:text-4xl">Get in Touch</h2>
+          <p className="mx-auto mt-2 max-w-3xl text-[13px] leading-relaxed text-[#647189] sm:text-sm">
+            Have questions about admissions, courses, or career opportunities? We&apos;re here to help you make the right educational decisions.
+          </p>
+          <p className="mx-auto mt-1 max-w-3xl text-[13px] leading-relaxed text-[#647189] sm:text-sm">
+            Contact our team for personalised guidance, and we&apos;ll help you explore the options that best fit your goals.
+          </p>
+        </div>
+        <div className="grid min-w-0 grid-cols-1 overflow-hidden rounded-[22px] border border-[#dce7f4] bg-white shadow-[0_20px_60px_rgba(8,38,79,0.14)] md:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)]">
           <aside
             className="relative isolate flex min-h-[470px] flex-col justify-between overflow-hidden bg-cover p-6 text-white sm:p-8 md:min-h-full md:p-9"
             style={{
@@ -177,193 +188,213 @@ export default function ContactSection() {
             </p>
           </aside>
 
-          <form onSubmit={handleSubmit} className="min-w-0 bg-white p-5 sm:p-7 lg:p-8">
-            <div className="mb-5">
-              <p className="text-[10px] uppercase font-bold tracking-[1.6px] text-[#1769e0] mb-1">Start your journey</p>
-              <h3 className="text-[20px] text-[#0b1730] font-bold leading-tight">Admission & Career Enquiry</h3>
-              <p className="text-[#647189] text-[11px] mt-1">Fill in the details below and we&apos;ll get back to you soon.</p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-2.5">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="fullName" className="text-[10px] text-[#43516a] font-semibold">Full name *</label>
-                <input
-                  type="text"
-                  name="fullName"
-                  id="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className={inputClassName}
-                  placeholder="Your name"
-                  required
-                />
-                {errors.fullName && <p className="text-red-500 text-[11px]">{errors.fullName}</p>}
+          <div className="min-w-0 bg-white">
+            <form onSubmit={handleSubmit} className="min-w-0 bg-white p-5 sm:p-7 lg:p-8">
+              <div className="mb-5">
+                <p className="text-[10px] uppercase font-bold tracking-[1.6px] text-[#1769e0] mb-1">Start your journey</p>
+                <h3 className="text-[20px] text-[#0b1730] font-bold leading-tight">Admission & Career Enquiry</h3>
+                <p className="text-[#647189] text-[11px] mt-1">Fill in the details below and we&apos;ll get back to you soon.</p>
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="phone" className="text-[10px] text-[#43516a] font-semibold">Mobile number *</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={inputClassName}
-                  placeholder="Your contact number"
-                  required
-                />
-                {errors.phone && <p className="text-red-500 text-[11px]">{errors.phone}</p>}
-              </div>
-
-              <div className="flex flex-col gap-1.5 sm:col-span-2">
-                <label htmlFor="email" className="text-[10px] text-[#43516a] font-semibold">Email address (optional)</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={inputClassName}
-                  placeholder="you@example.com"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label id="service-label" className="text-[10px] text-[#43516a] font-semibold">Service required *</label>
-                <FormControl fullWidth size="small" required error={Boolean(errors.service)} sx={selectStyles}>
-                  <Select
-                    id="service"
-                    labelId="service-label"
-                    name="service"
-                    value={formData.service}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-2.5">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="fullName" className="text-[10px] text-[#43516a] font-semibold">Full name *</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    id="fullName"
+                    value={formData.fullName}
                     onChange={handleChange}
-                    displayEmpty
-                    renderValue={(value) => value || 'Choose a service'}
-                    inputProps={{ 'aria-labelledby': 'service-label' }}
-                  >
-                    <MenuItem value="Regular Education Admission">Regular Education Admission</MenuItem>
-                    <MenuItem value="Online / Distance Education">Online / Distance Education</MenuItem>
-                    <MenuItem value="NIOS / BOSSE Open Schooling">NIOS / BOSSE Open Schooling</MenuItem>
-                    <MenuItem value="Career Guidance & Counselling">Career Guidance & Counselling</MenuItem>
-                    <MenuItem value="Online Academic Coaching">Online Academic Coaching</MenuItem>
-                    <MenuItem value="Competitive Exam Guidance">Competitive Exam Guidance</MenuItem>
-                    <MenuItem value="Other">Other</MenuItem>
-                  </Select>
-                  {errors.service && <FormHelperText>{errors.service}</FormHelperText>}
-                </FormControl>
-              </div>
+                    className={inputClassName}
+                    placeholder="Your name"
+                    required
+                  />
+                  {errors.fullName && <p className="text-red-500 text-[11px]">{errors.fullName}</p>}
+                </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label id="qualification-label" className="text-[10px] text-[#43516a] font-semibold">Last qualification *</label>
-                <FormControl fullWidth size="small" required error={Boolean(errors.qualification)} sx={selectStyles}>
-                  <Select
-                    id="qualification"
-                    labelId="qualification-label"
-                    name="qualification"
-                    value={formData.qualification}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="phone" className="text-[10px] text-[#43516a] font-semibold">Mobile number *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    value={formData.phone}
                     onChange={handleChange}
-                    displayEmpty
-                    renderValue={(value) => value || 'Select qualification'}
-                    inputProps={{ 'aria-labelledby': 'qualification-label' }}
-                  >
-                    <MenuItem value="Class 8 or below">Class 8 or below</MenuItem>
-                    <MenuItem value="Class 10">Class 10</MenuItem>
-                    <MenuItem value="Class 12">Class 12</MenuItem>
-                    <MenuItem value="Diploma">Diploma</MenuItem>
-                    <MenuItem value="Graduate">Graduate</MenuItem>
-                    <MenuItem value="Postgraduate">Postgraduate</MenuItem>
-                    <MenuItem value="Other">Other</MenuItem>
-                  </Select>
-                  {errors.qualification && <FormHelperText>{errors.qualification}</FormHelperText>}
-                </FormControl>
-              </div>
+                    className={inputClassName}
+                    placeholder="Your contact number"
+                    required
+                  />
+                  {errors.phone && <p className="text-red-500 text-[11px]">{errors.phone}</p>}
+                </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="course" className="text-[10px] text-[#43516a] font-semibold">Course / class of interest</label>
-                <input
-                  type="text"
-                  name="course"
-                  id="course"
-                  value={formData.course}
-                  onChange={handleChange}
-                  className={inputClassName}
-                  placeholder="e.g. BBA, MBA, Class 12"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label id="mode-label" className="text-[10px] text-[#43516a] font-semibold">Preferred study mode</label>
-                <FormControl fullWidth size="small" sx={selectStyles}>
-                  <Select
-                    id="mode"
-                    labelId="mode-label"
-                    name="mode"
-                    value={formData.mode}
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label htmlFor="email" className="text-[10px] text-[#43516a] font-semibold">Email address (optional)</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
                     onChange={handleChange}
-                    displayEmpty
-                    renderValue={(value) => value || 'No preference'}
-                    inputProps={{ 'aria-labelledby': 'mode-label' }}
+                    className={inputClassName}
+                    placeholder="you@example.com"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label id="service-label" className="text-[10px] text-[#43516a] font-semibold">Service required *</label>
+                  <FormControl fullWidth size="small" required error={Boolean(errors.service)} sx={selectStyles}>
+                    <Select
+                      id="service"
+                      labelId="service-label"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      displayEmpty
+                      renderValue={(value) => value || 'Choose a service'}
+                      inputProps={{ 'aria-labelledby': 'service-label' }}
+                    >
+                      <MenuItem value="Regular Education Admission">Regular Education Admission</MenuItem>
+                      <MenuItem value="Online / Distance Education">Online / Distance Education</MenuItem>
+                      <MenuItem value="NIOS / BOSSE Open Schooling">NIOS / BOSSE Open Schooling</MenuItem>
+                      <MenuItem value="Career Guidance & Counselling">Career Guidance & Counselling</MenuItem>
+                      <MenuItem value="Online Academic Coaching">Online Academic Coaching</MenuItem>
+                      <MenuItem value="Competitive Exam Guidance">Competitive Exam Guidance</MenuItem>
+                      <MenuItem value="Other">Other</MenuItem>
+                    </Select>
+                    {errors.service && <FormHelperText>{errors.service}</FormHelperText>}
+                  </FormControl>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label id="qualification-label" className="text-[10px] text-[#43516a] font-semibold">Last qualification *</label>
+                  <FormControl fullWidth size="small" required error={Boolean(errors.qualification)} sx={selectStyles}>
+                    <Select
+                      id="qualification"
+                      labelId="qualification-label"
+                      name="qualification"
+                      value={formData.qualification}
+                      onChange={handleChange}
+                      displayEmpty
+                      renderValue={(value) => value || 'Select qualification'}
+                      inputProps={{ 'aria-labelledby': 'qualification-label' }}
+                    >
+                      <MenuItem value="Class 8 or below">Class 8 or below</MenuItem>
+                      <MenuItem value="Class 10">Class 10</MenuItem>
+                      <MenuItem value="Class 12">Class 12</MenuItem>
+                      <MenuItem value="Diploma">Diploma</MenuItem>
+                      <MenuItem value="Graduate">Graduate</MenuItem>
+                      <MenuItem value="Postgraduate">Postgraduate</MenuItem>
+                      <MenuItem value="Other">Other</MenuItem>
+                    </Select>
+                    {errors.qualification && <FormHelperText>{errors.qualification}</FormHelperText>}
+                  </FormControl>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="course" className="text-[10px] text-[#43516a] font-semibold">Course / class of interest</label>
+                  <input
+                    type="text"
+                    name="course"
+                    id="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    className={inputClassName}
+                    placeholder="e.g. BBA, MBA, Class 12"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label id="mode-label" className="text-[10px] text-[#43516a] font-semibold">Preferred study mode</label>
+                  <FormControl fullWidth size="small" sx={selectStyles}>
+                    <Select
+                      id="mode"
+                      labelId="mode-label"
+                      name="mode"
+                      value={formData.mode}
+                      onChange={handleChange}
+                      displayEmpty
+                      renderValue={(value) => value || 'No preference'}
+                      inputProps={{ 'aria-labelledby': 'mode-label' }}
+                    >
+                      <MenuItem value="Regular / campus">Regular / campus</MenuItem>
+                      <MenuItem value="Online">Online</MenuItem>
+                      <MenuItem value="Distance">Distance</MenuItem>
+                      <MenuItem value="Open schooling">Open schooling</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label htmlFor="university" className="text-[10px] text-[#43516a] font-semibold">Preferred university / institution (optional)</label>
+                  <input
+                    type="text"
+                    name="university"
+                    id="university"
+                    value={formData.university}
+                    onChange={handleChange}
+                    className={inputClassName}
+                    placeholder="If you have one in mind"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5 sm:col-span-2">
+                  <label htmlFor="message" className="text-[10px] text-[#43516a] font-semibold">Additional question (optional)</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={2}
+                    className={`${inputClassName} resize-y min-h-[58px]`}
+                    placeholder="Tell us what you would like guidance with"
+                  />
+                </div>
+
+                <div className="flex gap-2 items-start text-[10px] text-[#69768c] sm:col-span-2">
+                  <input type="checkbox" className="mt-1" required />
+                  <span>I agree to share the details I entered with 360 Education & Consultancy for responding to this enquiry. I have read the <a href="#privacy" className="text-[#091831] underline">privacy notice</a>.</span>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex justify-center items-center gap-2 bg-[#1769e0] hover:bg-[#0d57c4] text-white py-2.5 px-6 rounded-[8px] text-[12px] font-bold transition-colors shadow-[0_7px_18px_rgba(23,105,224,0.2)] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    <MenuItem value="Regular / campus">Regular / campus</MenuItem>
-                    <MenuItem value="Online">Online</MenuItem>
-                    <MenuItem value="Distance">Distance</MenuItem>
-                    <MenuItem value="Open schooling">Open schooling</MenuItem>
-                  </Select>
-                </FormControl>
+                    <Plane aria-hidden="true" className="h-3.5 w-3.5" />
+                    {isSubmitting ? 'Sending enquiry…' : 'Send Enquiry'}
+                    <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
+                  </button>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-1.5 sm:col-span-2">
-                <label htmlFor="university" className="text-[10px] text-[#43516a] font-semibold">Preferred university / institution (optional)</label>
-                <input
-                  type="text"
-                  name="university"
-                  id="university"
-                  value={formData.university}
-                  onChange={handleChange}
-                  className={inputClassName}
-                  placeholder="If you have one in mind"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5 sm:col-span-2">
-                <label htmlFor="message" className="text-[10px] text-[#43516a] font-semibold">Additional question (optional)</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={2}
-                  className={`${inputClassName} resize-y min-h-[58px]`}
-                  placeholder="Tell us what you would like guidance with"
-                />
-              </div>
-
-              <div className="flex gap-2 items-start text-[10px] text-[#69768c] sm:col-span-2">
-                <input type="checkbox" className="mt-1" required />
-                <span>I agree to share the details I entered with 360 Education & Consultancy for responding to this enquiry. I have read the <a href="#privacy" className="text-[#091831] underline">privacy notice</a>.</span>
-              </div>
-
-              <div className="sm:col-span-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex justify-center items-center gap-2 bg-[#1769e0] hover:bg-[#0d57c4] text-white py-2.5 px-6 rounded-[8px] text-[12px] font-bold transition-colors shadow-[0_7px_18px_rgba(23,105,224,0.2)] disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  <Plane aria-hidden="true" className="h-3.5 w-3.5" />
-                  {isSubmitting ? 'Sending enquiry…' : 'Send Enquiry'}
-                  <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {submissionStatus && (
-              <p role="status" className={`mt-3 text-[12px] ${submissionStatus.startsWith('Thanks!') ? 'text-green-700' : 'text-red-600'}`}>
-                {submissionStatus}
-              </p>
-            )}
-          </form>
+              {submissionStatus && (
+                <p role="status" className={`mt-3 text-[12px] ${submissionStatus.startsWith('Thanks!') ? 'text-green-700' : 'text-red-600'}`}>
+                  {submissionStatus}
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </div>
+      <Snackbar
+        open={isSuccessToastOpen}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        onClose={(_, reason) => {
+          if (reason !== 'clickaway') setIsSuccessToastOpen(false);
+        }}
+      >
+        <Alert
+          onClose={() => setIsSuccessToastOpen(false)}
+          severity="success"
+          variant="filled"
+          role="status"
+          sx={{ width: '100%' }}
+        >
+          Your enquiry has been sent successfully. We will get back to you soon.
+        </Alert>
+      </Snackbar>
     </section>
   );
 }
