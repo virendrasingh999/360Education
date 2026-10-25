@@ -10,8 +10,8 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <div className="flex-1">
-      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24 px-4">
-        <div className="max-w-7xl mx-auto text-center">
+      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Get in touch with us for free education and career guidance.
@@ -19,8 +19,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section data-aos="fade-up" className="py-16 md:py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section data-aos="fade-up" className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
           <SectionTitle
             eyebrow="GET IN TOUCH"
             heading="Reach Out to Us"
@@ -71,7 +71,7 @@ export default function ContactPage() {
                 <MapPin className="w-6 h-6 text-[#E9B746]" />
               </div>
               <h3 className="font-bold text-[#0B1730] mb-2">Location</h3>
-              <p className="text-[#52627A]">Saharanpur, Uttar Pradesh</p>
+              <p className="text-[#52627A]">India</p>
             </div>
           </div>
 

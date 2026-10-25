@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
@@ -19,11 +20,11 @@ export default function Navbar() {
 
   return (
     <>
-    <header className="sticky top-0 z-30 bg-[#ffffffed] backdrop-blur-[14px] border-b border-[#e8edf4]">
-      <div className="max-w-[1180px] mx-auto px-4">
+    <header className="sticky top-0 z-30 bg-[#f9fafbed] backdrop-blur-[14px] border-b border-[#e8edf4]">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="flex justify-between items-center h-[82px] gap-5">
           <Link href="#home" className="flex items-center gap-3 min-w-0 sm:min-w-[235px]" aria-label="360 Education & Consultancy home">
-            <img src="/logo.jpeg" alt="360 Education & Consultancy Logo" className="w-12 h-12 sm:w-[66px] sm:h-[66px] object-contain" />
+            <Image src="/logo.jpeg" alt="360 Education & Consultancy Logo" width={1600} height={1600} priority sizes="(max-width: 640px) 48px, 66px" className="w-12 h-12 sm:w-[66px] sm:h-[66px] object-contain" />
             <div className="hidden sm:block">
               <strong className="block text-[#091831] text-[15px] leading-[1.15]">360 Education & Consultancy</strong>
               <small className="block text-[#7b8494] text-[10px] tracking-[1.25px] uppercase mt-1">Your Career, Our Direction</small>

@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#061126] text-[#c7d3e5] py-[29px]">
-      <div className="max-w-[1180px] mx-auto px-4">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="flex justify-between items-center gap-5 flex-wrap">
           <div>
             <div className="font-[900] text-white">360 Education & Consultancy</div>

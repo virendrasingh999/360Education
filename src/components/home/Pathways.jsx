@@ -1,7 +1,7 @@
 export default function Pathways() {
   return (
-    <section data-aos="fade-up" className="py-12 sm:py-[78px] bg-[#f6f8fc]">
-      <div className="max-w-[1180px] mx-auto px-4">
+    <section data-aos="fade-up" className="py-12 sm:py-[78px] bg-gray-50">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="text-center max-w-[730px] mx-auto mb-10">
           <div className="text-[11px] uppercase tracking-[1.8px] text-[#16836a] font-[900]">Learning options</div>
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#091831] tracking-[-1px] leading-[1.12] mt-2.5 mb-3">Different routes. One place to start.</h2>

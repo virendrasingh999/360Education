@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import SectionTitle from '@/components/common/SectionTitle';
+import { openSchoolBoards, universities } from '@/data/institutions';
 
 export const metadata = {
   title: 'Universities - 360 Education & Consultancy',
@@ -7,48 +8,10 @@ export const metadata = {
 };
 
 export default function UniversitiesPage() {
-  const institutions = [
-    {
-      name: 'Chandigarh University Online',
-      category: 'ONLINE LEARNING',
-      description: 'Offers various online undergraduate and postgraduate programmes across multiple disciplines.',
-    },
-    {
-      name: 'Subharti University',
-      category: 'UNIVERSITY OPTIONS',
-      description: 'Provides regular, distance and online education programmes in various fields.',
-    },
-    {
-      name: 'Kurukshetra University Online',
-      category: 'ONLINE LEARNING',
-      description: 'State university offering online programmes with recognised degrees.',
-    },
-    {
-      name: 'Mangalayatan University Online',
-      category: 'ONLINE LEARNING',
-      description: 'Offers flexible online learning options for working professionals and students.',
-    },
-    {
-      name: 'Graphic Era Online',
-      category: 'ONLINE LEARNING',
-      description: 'Known for technology and management programmes through online mode.',
-    },
-    {
-      name: 'NIOS',
-      category: 'OPEN SCHOOLING',
-      description: 'National Institute of Open Schooling - flexible schooling option for secondary and senior secondary education.',
-    },
-    {
-      name: 'BOSSE',
-      category: 'OPEN SCHOOLING',
-      description: 'Board of Open Schooling and Skill Education - alternative open schooling pathway.',
-    },
-  ];
-
   return (
     <div className="flex-1">
-      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24 px-4">
-        <div className="max-w-7xl mx-auto text-center">
+      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">University Options</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             We help learners understand available institutions and programme routes.
@@ -56,27 +19,43 @@ export default function UniversitiesPage() {
         </div>
       </section>
 
-      <section data-aos="fade-up" className="py-16 md:py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section data-aos="fade-up" className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
           <SectionTitle
             eyebrow="INSTITUTIONS"
-            heading="Explore University Options"
-            description="Learn about various institutions offering online, distance and open schooling programmes. Final admission depends on each institution's current rules and eligibility."
+            heading="Explore 25 University Options"
+            description="Browse institutions to discuss with a counsellor. Programme availability, study mode and eligibility depend on each institution's current offerings and rules."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {institutions.map((institution, index) => (
+            {universities.map((institution) => (
               <div
-                key={index}
+                key={institution.name}
                 className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
               >
                 <span className="inline-block text-[#087F75] text-xs font-semibold tracking-wider uppercase mb-3">
                   {institution.category}
                 </span>
                 <h3 className="text-[#0B1730] font-bold text-xl mb-3">{institution.name}</h3>
-                <p className="text-[#52627A] text-sm leading-relaxed">{institution.description}</p>
+                <p className="text-[#52627A] text-sm leading-relaxed">
+                  Ask us about current programme availability, study modes and eligibility for this institution.
+                </p>
               </div>
             ))}
+          </div>
+
+          <div className="mb-12 rounded-xl border border-gray-100 bg-[#F5F7FA] p-6">
+            <h3 className="text-xl font-bold text-[#0B1730] mb-3">Open Schooling Boards</h3>
+            <p className="text-[#52627A] text-sm leading-relaxed mb-4">
+              For Class 10 and 12 open-schooling guidance, ask us about the board options below.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {openSchoolBoards.map((board) => (
+                <span key={board.name} className="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm font-semibold text-[#33425a]">
+                  {board.name}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="bg-[#0B1730]/5 rounded-xl p-8 border border-[#0B1730]/10 mb-8">

@@ -2,6 +2,27 @@
 
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { FormControl, FormHelperText, MenuItem, Select } from '@mui/material';
+import { ArrowRight, Compass, GraduationCap, Globe2, Headset, Plane, ShieldCheck } from 'lucide-react';
+
+const selectStyles = {
+  '& .MuiOutlinedInput-root': {
+    borderRadius: '10px',
+    backgroundColor: '#fff',
+    fontSize: '12px',
+    color: '#334155',
+    '& fieldset': { borderColor: '#d6e2f0' },
+    '&:hover fieldset': { borderColor: '#94a3b8' },
+    '&.Mui-focused fieldset': {
+      borderColor: '#087bff',
+      boxShadow: '0 0 0 3px rgba(8,123,255,0.12)',
+    },
+  },
+  '& .MuiSelect-select': { py: '8px', minHeight: 'unset' },
+  '& .MuiFormHelperText-root': { marginLeft: 0 },
+};
+
+const inputClassName = 'w-full border border-[#d6e2f0] bg-white rounded-[10px] px-3 py-[10px] text-[12px] text-[#334155] outline-none transition placeholder:text-[#9aa9bb] focus:border-[#087bff] focus:shadow-[0_0_0_3px_rgba(8,123,255,0.12)]';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -21,23 +42,23 @@ export default function ContactSection() {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.fullName.trim()) {
       newErrors.fullName = 'Full name is required';
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = 'Mobile number is required';
     }
-    
+
     if (!formData.service) {
       newErrors.service = 'Service required is required';
     }
-    
+
     if (!formData.qualification) {
       newErrors.qualification = 'Last qualification is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -107,62 +128,72 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" data-aos="fade-up" className="py-12 sm:py-[78px] bg-[#f5f7fb]">
-      <div className="max-w-[1180px] mx-auto px-4">
-        <div className="text-center max-w-[730px] mx-auto mb-10">
-          <div className="text-[11px] uppercase tracking-[1.8px] text-[#16836a] font-[900]">Contact 360</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#091831] tracking-[-1px] leading-[1.12] mt-2.5 mb-3">Let&apos;s discuss your next step</h2>
-          <p className="text-[#647189]">Fill in a few details and send your enquiry directly to our team.</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-5">
-          {/* Left Column - Contact Info */}
-          <div className="min-w-0 bg-[#091831] text-white rounded-[19px] p-5 sm:p-7">
-            <h3 className="text-[22px] m-0 mb-2">360 Education & Consultancy</h3>
-            <p className="text-[#d0dbea] text-[13px] mb-5">करियर की शुरुआत करो 360 के साथ.</p>
-            
-            <div className="py-3 border-b border-[#ffffff20] text-[13px]">
-              <small className="block text-[#aebed3] text-[10px] uppercase tracking-[1px] mb-1">Call / WhatsApp</small>
-              <a href="tel:+919536385100" className="hover:text-[#e8bd61]">+91 9536385100</a>
+    <section id="contact" data-aos="fade-up" className="overflow-hidden bg-gray-50 py-10 sm:py-16">
+      <div className="mx-auto max-w-[1440px] px-3 sm:px-5 lg:px-6">
+        <div className="grid grid-cols-1 overflow-hidden rounded-[22px] border border-[#dce7f4] bg-white shadow-[0_20px_60px_rgba(8,38,79,0.14)] md:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)]">
+          <aside
+            className="relative isolate flex min-h-[470px] flex-col justify-between overflow-hidden bg-cover p-6 text-white sm:p-8 md:min-h-full md:p-9"
+            style={{
+              backgroundImage: 'linear-gradient(180deg, rgba(8,38,79,0.38), rgba(5,24,52,0.62)), url("/London%20Sunset%20Over%20the%20Thames.jpg"), linear-gradient(145deg, #0b3970, #08264f 60%, #061b39)',
+              backgroundPosition: '62% center',
+            }}
+          >
+            <div aria-hidden="true" className="absolute -right-20 top-28 -z-10 h-64 w-64 rounded-full border border-white/20 shadow-[0_0_0_25px_rgba(255,255,255,0.04),0_0_0_55px_rgba(255,255,255,0.025)]" />
+            <div>
+              <div className="mb-8 flex items-center gap-3">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-[#8ed8ff]">
+                  <GraduationCap aria-hidden="true" className="h-7 w-7" />
+                </div>
+                <h2 className="text-[15px] font-bold leading-tight">360 Education & Consultancy</h2>
+              </div>
+              <p className="mb-3 text-[10px] font-semibold tracking-[1.6px] text-[#9bdcff]">STUDY <span className="mx-1 text-white/70">|</span> WORK <span className="mx-1 text-white/70">|</span> BUILD YOUR FUTURE</p>
+              <h3 className="mb-3 max-w-[350px] text-[28px] font-bold leading-[1.14] sm:text-[32px]">
+                Your Global Education & Career Partner
+              </h3>
+              <p className="max-w-[360px] text-[13px] leading-relaxed text-[#e0ebf9]">
+                Helping you study abroad, build your career and achieve your dreams.
+              </p>
+              <ul className="mt-8 grid gap-4 text-[12px] text-blue-50">
+                <li className="flex items-center gap-3">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#087bff]"><Globe2 aria-hidden="true" className="h-4 w-4" /></span>
+                  <span><strong className="block font-semibold text-white">Top Universities</strong><span className="text-blue-100/80">Get into world&apos;s best institutions</span></span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#087bff]"><Compass aria-hidden="true" className="h-4 w-4" /></span>
+                  <span><strong className="block font-semibold text-white">Expert Counselling</strong><span className="text-blue-100/80">Personalized guidance at every step</span></span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#087bff]"><ShieldCheck aria-hidden="true" className="h-4 w-4" /></span>
+                  <span><strong className="block font-semibold text-white">100% Genuine Guidance</strong><span className="text-blue-100/80">Trusted &amp; transparent process</span></span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#087bff]"><Headset aria-hidden="true" className="h-4 w-4" /></span>
+                  <span><strong className="block font-semibold text-white">End-to-End Support</strong><span className="text-blue-100/80">From application to arrival</span></span>
+                </li>
+              </ul>
             </div>
-            
-            <div className="py-3 border-b border-[#ffffff20] text-[13px] break-words">
-              <small className="block text-[#aebed3] text-[10px] uppercase tracking-[1px] mb-1">Email</small>
-              <a href="mailto:360education.consultancy@gmail.com" className="hover:text-[#e8bd61]">360education.consultancy@gmail.com</a>
-            </div>
-            
-            <div className="py-3 border-b border-[#ffffff20] text-[13px]">
-              <small className="block text-[#aebed3] text-[10px] uppercase tracking-[1px] mb-1">Office address</small>
-              Lane-5, Himmat Nagar,<br />
-              Star Paper Mill Road, Saharanpur
-            </div>
-            
-            <div className="py-3 border-b border-[#ffffff20] text-[13px]">
-              <small className="block text-[#aebed3] text-[10px] uppercase tracking-[1px] mb-1">Instagram</small>
-              <a href="https://www.instagram.com/360education_consultancy/" target="_blank" rel="noopener noreferrer" className="hover:text-[#e8bd61]">@360education_consultancy ↗</a>
-            </div>
-            
-            <div className="py-3 text-[13px]">
-              <small className="block text-[#aebed3] text-[10px] uppercase tracking-[1px] mb-1">Founder</small>
-              Saurabh Verma<br />
-              <span className="text-[#cbd6e8]">Founder & Chief Admission Counsellor</span>
-            </div>
-          </div>
+            <p className="mt-8 text-[14px] font-semibold italic tracking-wide text-[#d5e9ff]">
+              Dream <span className="text-[#63c4ff]">·</span> Apply <span className="text-[#63c4ff]">·</span> Achieve
+            </p>
+          </aside>
 
-          {/* Right Column - Enquiry Form */}
-          <form onSubmit={handleSubmit} className="min-w-0 bg-white border border-[#e3e8f0] rounded-[19px] p-5 sm:p-7 shadow-[0_8px_25px_rgba(7,24,49,0.07)]">
-            <h3 className="text-[21px] text-[#091831] m-0 mb-1">Admission & Career Enquiry</h3>
-            <p className="text-[#647189] text-[12px] mb-5">Fields marked * are required.</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-[13px]">
+          <form onSubmit={handleSubmit} className="min-w-0 bg-white p-5 sm:p-7 lg:p-8">
+            <div className="mb-5">
+              <p className="text-[10px] uppercase font-bold tracking-[1.6px] text-[#1769e0] mb-1">Start your journey</p>
+              <h3 className="text-[20px] text-[#0b1730] font-bold leading-tight">Admission & Career Enquiry</h3>
+              <p className="text-[#647189] text-[11px] mt-1">Fill in the details below and we&apos;ll get back to you soon.</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-2.5">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] text-[#43516a] font-[800]">Full name *</label>
+                <label htmlFor="fullName" className="text-[10px] text-[#43516a] font-semibold">Full name *</label>
                 <input
                   type="text"
                   name="fullName"
+                  id="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
+                  className={inputClassName}
                   placeholder="Your name"
                   required
                 />
@@ -170,137 +201,157 @@ export default function ContactSection() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] text-[#43516a] font-[800]">Mobile number *</label>
+                <label htmlFor="phone" className="text-[10px] text-[#43516a] font-semibold">Mobile number *</label>
                 <input
                   type="tel"
                   name="phone"
+                  id="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
+                  className={inputClassName}
                   placeholder="Your contact number"
                   required
                 />
                 {errors.phone && <p className="text-red-500 text-[11px]">{errors.phone}</p>}
               </div>
 
-              <div className="flex flex-col gap-1.5 md:col-span-2">
-                <label className="text-[11px] text-[#43516a] font-[800]">Email address (optional)</label>
+              <div className="flex flex-col gap-1.5 sm:col-span-2">
+                <label htmlFor="email" className="text-[10px] text-[#43516a] font-semibold">Email address (optional)</label>
                 <input
                   type="email"
                   name="email"
+                  id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
+                  className={inputClassName}
                   placeholder="you@example.com"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] text-[#43516a] font-[800]">Service required *</label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
-                  required
-                >
-                  <option value="">Choose a service</option>
-                  <option>Regular Education Admission</option>
-                  <option>Online / Distance Education</option>
-                  <option>NIOS / BOSSE Open Schooling</option>
-                  <option>Career Counselling</option>
-                  <option>Academic Coaching</option>
-                  <option>Competitive Exam Guidance</option>
-                  <option>Other</option>
-                </select>
-                {errors.service && <p className="text-red-500 text-[11px]">{errors.service}</p>}
+                <label id="service-label" className="text-[10px] text-[#43516a] font-semibold">Service required *</label>
+                <FormControl fullWidth size="small" required error={Boolean(errors.service)} sx={selectStyles}>
+                  <Select
+                    id="service"
+                    labelId="service-label"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    displayEmpty
+                    renderValue={(value) => value || 'Choose a service'}
+                    inputProps={{ 'aria-labelledby': 'service-label' }}
+                  >
+                    <MenuItem value="Regular Education Admission">Regular Education Admission</MenuItem>
+                    <MenuItem value="Online / Distance Education">Online / Distance Education</MenuItem>
+                    <MenuItem value="NIOS / BOSSE Open Schooling">NIOS / BOSSE Open Schooling</MenuItem>
+                    <MenuItem value="Career Guidance & Counselling">Career Guidance & Counselling</MenuItem>
+                    <MenuItem value="Online Academic Coaching">Online Academic Coaching</MenuItem>
+                    <MenuItem value="Competitive Exam Guidance">Competitive Exam Guidance</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+                  {errors.service && <FormHelperText>{errors.service}</FormHelperText>}
+                </FormControl>
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] text-[#43516a] font-[800]">Last qualification *</label>
-                <select
-                  name="qualification"
-                  value={formData.qualification}
-                  onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
-                  required
-                >
-                  <option value="">Select qualification</option>
-                  <option>Class 8 or below</option>
-                  <option>Class 10</option>
-                  <option>Class 12</option>
-                  <option>Diploma</option>
-                  <option>Graduate</option>
-                  <option>Postgraduate</option>
-                  <option>Other</option>
-                </select>
-                {errors.qualification && <p className="text-red-500 text-[11px]">{errors.qualification}</p>}
+                <label id="qualification-label" className="text-[10px] text-[#43516a] font-semibold">Last qualification *</label>
+                <FormControl fullWidth size="small" required error={Boolean(errors.qualification)} sx={selectStyles}>
+                  <Select
+                    id="qualification"
+                    labelId="qualification-label"
+                    name="qualification"
+                    value={formData.qualification}
+                    onChange={handleChange}
+                    displayEmpty
+                    renderValue={(value) => value || 'Select qualification'}
+                    inputProps={{ 'aria-labelledby': 'qualification-label' }}
+                  >
+                    <MenuItem value="Class 8 or below">Class 8 or below</MenuItem>
+                    <MenuItem value="Class 10">Class 10</MenuItem>
+                    <MenuItem value="Class 12">Class 12</MenuItem>
+                    <MenuItem value="Diploma">Diploma</MenuItem>
+                    <MenuItem value="Graduate">Graduate</MenuItem>
+                    <MenuItem value="Postgraduate">Postgraduate</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+                  {errors.qualification && <FormHelperText>{errors.qualification}</FormHelperText>}
+                </FormControl>
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] text-[#43516a] font-[800]">Course / class of interest</label>
+                <label htmlFor="course" className="text-[10px] text-[#43516a] font-semibold">Course / class of interest</label>
                 <input
                   type="text"
                   name="course"
+                  id="course"
                   value={formData.course}
                   onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
+                  className={inputClassName}
                   placeholder="e.g. BBA, MBA, Class 12"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] text-[#43516a] font-[800]">Preferred study mode</label>
-                <select
-                  name="mode"
-                  value={formData.mode}
-                  onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
-                >
-                  <option value="">No preference</option>
-                  <option>Regular / campus</option>
-                  <option>Online</option>
-                  <option>Distance</option>
-                  <option>Open schooling</option>
-                </select>
+                <label id="mode-label" className="text-[10px] text-[#43516a] font-semibold">Preferred study mode</label>
+                <FormControl fullWidth size="small" sx={selectStyles}>
+                  <Select
+                    id="mode"
+                    labelId="mode-label"
+                    name="mode"
+                    value={formData.mode}
+                    onChange={handleChange}
+                    displayEmpty
+                    renderValue={(value) => value || 'No preference'}
+                    inputProps={{ 'aria-labelledby': 'mode-label' }}
+                  >
+                    <MenuItem value="Regular / campus">Regular / campus</MenuItem>
+                    <MenuItem value="Online">Online</MenuItem>
+                    <MenuItem value="Distance">Distance</MenuItem>
+                    <MenuItem value="Open schooling">Open schooling</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
 
-              <div className="flex flex-col gap-1.5 md:col-span-2">
-                <label className="text-[11px] text-[#43516a] font-[800]">Preferred university / institution (optional)</label>
+              <div className="flex flex-col gap-1.5 sm:col-span-2">
+                <label htmlFor="university" className="text-[10px] text-[#43516a] font-semibold">Preferred university / institution (optional)</label>
                 <input
                   type="text"
                   name="university"
+                  id="university"
                   value={formData.university}
                   onChange={handleChange}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
+                  className={inputClassName}
                   placeholder="If you have one in mind"
                 />
               </div>
 
-              <div className="flex flex-col gap-1.5 md:col-span-2">
-                <label className="text-[11px] text-[#43516a] font-[800]">Additional question (optional)</label>
+              <div className="flex flex-col gap-1.5 sm:col-span-2">
+                <label htmlFor="message" className="text-[10px] text-[#43516a] font-semibold">Additional question (optional)</label>
                 <textarea
                   name="message"
+                  id="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={3}
-                  className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-3 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)] resize-y min-h-[78px]"
+                  rows={2}
+                  className={`${inputClassName} resize-y min-h-[58px]`}
                   placeholder="Tell us what you would like guidance with"
                 />
               </div>
 
-              <div className="flex gap-2 items-start text-[11px] text-[#69768c] md:col-span-2">
+              <div className="flex gap-2 items-start text-[10px] text-[#69768c] sm:col-span-2">
                 <input type="checkbox" className="mt-1" required />
                 <span>I agree to share the details I entered with 360 Education & Consultancy for responding to this enquiry. I have read the <a href="#privacy" className="text-[#091831] underline">privacy notice</a>.</span>
               </div>
 
-              <div className="md:col-span-2">
+              <div className="sm:col-span-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-br from-[#f5d990] to-[#e8bd61] text-[#16213a] py-3 px-6 rounded-[10px] text-[13px] font-[850] hover:-translate-y-[2px] transition-transform shadow-[0_9px_25px_rgba(214,169,65,0.19)] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full inline-flex justify-center items-center gap-2 bg-[#1769e0] hover:bg-[#0d57c4] text-white py-2.5 px-6 rounded-[8px] text-[12px] font-bold transition-colors shadow-[0_7px_18px_rgba(23,105,224,0.2)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {isSubmitting ? 'Sending enquiry…' : 'Send Enquiry ↗'}
+                  <Plane aria-hidden="true" className="h-3.5 w-3.5" />
+                  {isSubmitting ? 'Sending enquiry…' : 'Send Enquiry'}
+                  <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
                 </button>
               </div>
             </div>

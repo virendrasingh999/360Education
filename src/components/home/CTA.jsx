@@ -1,7 +1,7 @@
 export default function CTA() {
   return (
     <section data-aos="fade-up" className="pb-[78px]">
-      <div className="max-w-[1180px] mx-auto px-4">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="rounded-[22px] p-6 sm:p-[38px_42px] bg-gradient-to-br from-[#08162f] to-[#17484e] flex flex-col sm:flex-row items-center sm:justify-between gap-6 text-center sm:text-left text-white">
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold leading-[1.12] m-0 mb-2">Ready to explore your admission options?</h2>

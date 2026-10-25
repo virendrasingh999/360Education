@@ -42,6 +42,66 @@ export default function CoursesPage() {
     },
     {
       icon: Laptop,
+      title: 'Computer Certificate Courses',
+      description: 'Certificate-level options across foundational, office, creative and technical computing skills.',
+      examples: [
+        'Basic Computer, CCC and MS Office',
+        'Advanced Excel, Tally, DTP, data entry and graphic design',
+        'Python, Java, web design and digital marketing',
+      ],
+    },
+    {
+      icon: Laptop,
+      title: 'Computer Diploma Courses',
+      description: 'Explore computer diplomas across software, development, infrastructure and emerging technology.',
+      examples: [
+        'DCA, ADCA and office automation',
+        'Software, web and app development',
+        'Hardware, networking, cybersecurity, data analytics, AI/ML and cloud',
+      ],
+    },
+    {
+      icon: Award,
+      title: 'Yoga & Wellness',
+      description: 'Explore yoga study pathways at certificate, diploma and postgraduate diploma levels.',
+      examples: [
+        'Certificate in Yoga',
+        'Diploma in Yoga',
+        'Postgraduate Diploma in Yoga',
+      ],
+    },
+    {
+      icon: Award,
+      title: 'Fire Safety Certificate',
+      description: 'Certificate-level options in fire safety and related safety practices.',
+      examples: [
+        'Fire prevention and safety basics',
+        'Emergency response awareness',
+        'Ask about course eligibility and delivery mode',
+      ],
+    },
+    {
+      icon: Book,
+      title: 'Health & Nutrition Certificate',
+      description: 'Certificate-level options in health, nutrition and wellness.',
+      examples: [
+        'Nutrition fundamentals',
+        'Health and wellness basics',
+        'Ask about course eligibility and delivery mode',
+      ],
+    },
+    {
+      icon: Award,
+      title: 'Beauty & Beautification',
+      description: 'Explore certificate and diploma options in beauty, beautification and personal care.',
+      examples: [
+        'Certificate in beauty and beautification',
+        'Diploma in beauty and beautification',
+        'Ask about course eligibility and delivery mode',
+      ],
+    },
+    {
+      icon: Laptop,
       title: 'Online Learning',
       description: 'Flexible online programmes that allow you to study from anywhere at your own pace.',
       examples: [
@@ -65,8 +125,8 @@ export default function CoursesPage() {
       title: 'Open Schooling',
       description: 'Open schooling options for students seeking alternative education pathways.',
       examples: [
-        'NIOS programmes',
-        'BOSSE courses',
+        'NIOS Class 10 and 12 options',
+        'BOSSE Class 10 and 12 options',
         'Flexible examination schedules',
       ],
     },
@@ -74,8 +134,8 @@ export default function CoursesPage() {
 
   return (
     <div className="flex-1">
-      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24 px-4">
-        <div className="max-w-7xl mx-auto text-center">
+      <section data-aos="fade-up" className="bg-gradient-to-br from-[#0B1730] to-[#10294B] py-16 md:py-24">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Education Pathways</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Discover various educational pathways available to help you achieve your academic and career goals.
@@ -83,8 +143,8 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      <section data-aos="fade-up" className="py-16 md:py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section data-aos="fade-up" className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
           <SectionTitle
             eyebrow="EXPLORE OPTIONS"
             heading="Available Education Pathways"

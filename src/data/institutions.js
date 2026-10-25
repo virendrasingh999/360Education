@@ -1,0 +1,32 @@
+export const universities = [
+  { name: 'Amity University Online', category: 'Online option' },
+  { name: 'Chandigarh University Online', category: 'Online option' },
+  { name: 'Jain University Online', category: 'Online option' },
+  { name: 'Manipal University Jaipur Online', category: 'Online option' },
+  { name: 'Lovely Professional University Online', category: 'Online option' },
+  { name: 'Indira Gandhi National Open University (IGNOU)', category: 'Open / distance option' },
+  { name: 'NMIMS Centre for Distance and Online Education', category: 'Online / distance option' },
+  { name: 'Sikkim Manipal University', category: 'Online / distance option' },
+  { name: 'Dr. D. Y. Patil Vidyapeeth, Pune', category: 'Online / distance option' },
+  { name: 'UPES Online', category: 'Online option' },
+  { name: 'Shoolini University Online', category: 'Online option' },
+  { name: 'Uttaranchal University Online', category: 'Online option' },
+  { name: 'Graphic Era University', category: 'University option' },
+  { name: 'Mangalayatan University', category: 'Online / distance option' },
+  { name: 'Swami Vivekanand Subharti University', category: 'Online / distance option' },
+  { name: 'Kurukshetra University', category: 'Online / distance option' },
+  { name: 'University of Mumbai (IDOL)', category: 'Distance option' },
+  { name: 'Dr. B. R. Ambedkar Open University', category: 'Open / distance option' },
+  { name: 'Yashwantrao Chavan Maharashtra Open University', category: 'Open / distance option' },
+  { name: 'Karnataka State Open University', category: 'Open / distance option' },
+  { name: 'Uttarakhand Open University', category: 'Open / distance option' },
+  { name: 'Tamil Nadu Open University', category: 'Open / distance option' },
+  { name: 'Netaji Subhas Open University', category: 'Open / distance option' },
+  { name: 'Nalanda Open University', category: 'Open / distance option' },
+  { name: 'Madhya Pradesh Bhoj Open University', category: 'Open / distance option' },
+];
+
+export const openSchoolBoards = [
+  { name: 'NIOS', category: 'Open schooling' },
+  { name: 'BOSSE', category: 'Open schooling' },
+];

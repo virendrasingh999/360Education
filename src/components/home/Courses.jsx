@@ -1,6 +1,22 @@
 'use client';
 
 import { useState } from 'react';
+import { FormControl, MenuItem, Select } from '@mui/material';
+
+const filterSelectStyles = {
+  '& .MuiOutlinedInput-root': {
+    borderRadius: '9px',
+    backgroundColor: '#fff',
+    fontSize: '13px',
+    '& fieldset': { borderColor: '#dce3ed' },
+    '&:hover fieldset': { borderColor: '#b58b34' },
+    '&.Mui-focused fieldset': {
+      borderColor: '#b58b34',
+      boxShadow: '0 0 0 3px rgba(232,189,97,0.13)',
+    },
+  },
+  '& .MuiSelect-select': { py: '11px', minHeight: 'unset' },
+};
 
 export default function Courses() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,13 +37,24 @@ export default function Courses() {
     { title: 'D.El.Ed / BTC', level: 'Professional', mode: 'Regular', description: 'Explore teacher education pathways and current rules.' },
     { title: 'LLB — Law', level: 'Professional', mode: 'Regular', description: 'Explore law programmes and institution-specific eligibility.' },
     { title: 'GNM & Paramedical', level: 'Professional', mode: 'Regular', description: 'Ask about programme availability and admission criteria.' },
-    { title: 'Class 10 & 12 — Open Schooling', level: 'School / Open Board', mode: 'Open Schooling', description: 'Get information on NIOS/BOSSE options, subjects and eligibility.' },
+    { title: 'NIOS — Class 10 & 12', level: 'School / Open Board', mode: 'Open Schooling', description: 'Explore NIOS subjects, eligibility and open-schooling application guidance.' },
+    { title: 'BOSSE — Class 10 & 12', level: 'School / Open Board', mode: 'Open Schooling', description: 'Explore BOSSE subjects, eligibility and open-schooling application guidance.' },
+    { title: 'Computer Certificate Courses', level: 'Certificate', mode: 'Ask for Availability', description: 'Basic computer, CCC, MS Office, advanced Excel, Tally, DTP, graphic design, Python, Java, web design, data entry and digital marketing.' },
+    { title: 'Computer Diploma Courses', level: 'Diploma', mode: 'Ask for Availability', description: 'DCA, ADCA, software and app development, web development, hardware and networking, cybersecurity, data analytics, AI, machine learning and cloud computing.' },
+    { title: 'Yoga Certificate Course', level: 'Certificate', mode: 'Ask for Availability', description: 'Explore certificate-level yoga and wellness study options.' },
+    { title: 'Yoga Diploma Course', level: 'Diploma', mode: 'Ask for Availability', description: 'Explore diploma-level yoga and wellness study options.' },
+    { title: 'Yoga Postgraduate Diploma', level: 'Postgraduate Diploma', mode: 'Ask for Availability', description: 'Explore postgraduate diploma options in yoga, subject to eligibility.' },
+    { title: 'Fire Safety Certificate', level: 'Certificate', mode: 'Ask for Availability', description: 'Explore certificate courses in fire safety and related safety practices.' },
+    { title: 'Health & Nutrition Certificate', level: 'Certificate', mode: 'Ask for Availability', description: 'Explore certificate courses in health, nutrition and wellness.' },
+    { title: 'Beauty & Beautification Certificate', level: 'Certificate', mode: 'Ask for Availability', description: 'Explore certificate courses in beauty, beautification and personal care.' },
+    { title: 'Beauty & Beautification Diploma', level: 'Diploma', mode: 'Ask for Availability', description: 'Explore diploma courses in beauty, beautification and personal care.' },
     { title: 'Competitive Exam Guidance', level: 'Professional', mode: 'Regular', description: 'Explore guidance for SSC, banking, railways, civil services and defence.' },
     { title: 'Online & Distance Degrees', level: 'Undergraduate', mode: 'Online / Distance', description: 'Compare flexible study modes and programme options.' },
   ];
 
   const filteredCourses = courses.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const searchContent = `${course.title} ${course.description}`.toLowerCase();
+    const matchesSearch = searchContent.includes(searchTerm.toLowerCase());
     const matchesLevel = levelFilter === '' || course.level === levelFilter;
     const matchesMode = modeFilter === '' || course.mode === modeFilter;
     return matchesSearch && matchesLevel && matchesMode;
@@ -40,8 +67,8 @@ export default function Courses() {
   };
 
   return (
-    <section id="courses" data-aos="fade-up" className="py-12 sm:py-[78px] bg-white">
-      <div className="max-w-[1180px] mx-auto px-4">
+    <section id="courses" data-aos="fade-up" className="py-12 sm:py-[78px] bg-gray-50">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="text-center max-w-[730px] mx-auto mb-10">
           <div className="text-[11px] uppercase tracking-[1.8px] text-[#16836a] font-[900]">Course finder</div>
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#091831] tracking-[-1px] leading-[1.12] mt-2.5 mb-3">Find a course to explore</h2>
@@ -71,29 +98,39 @@ export default function Courses() {
               className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-4 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
               aria-label="Search courses"
             />
-            <select
-              value={levelFilter}
-              onChange={(e) => setLevelFilter(e.target.value)}
-              className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-4 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
-              aria-label="Filter by level"
-            >
-              <option value="">All levels</option>
-              <option>Undergraduate</option>
-              <option>Postgraduate</option>
-              <option>Professional</option>
-              <option>School / Open Board</option>
-            </select>
-            <select
-              value={modeFilter}
-              onChange={(e) => setModeFilter(e.target.value)}
-              className="w-full border border-[#dce3ed] bg-white rounded-[9px] px-4 py-3 text-[13px] outline-none focus:border-[#b58b34] focus:shadow-[0_0_0_3px_rgba(232,189,97,0.13)]"
-              aria-label="Filter by mode"
-            >
-              <option value="">All study modes</option>
-              <option>Regular</option>
-              <option>Online / Distance</option>
-              <option>Open Schooling</option>
-            </select>
+            <FormControl fullWidth size="small" sx={filterSelectStyles}>
+              <Select
+                value={levelFilter}
+                onChange={(event) => setLevelFilter(event.target.value)}
+                displayEmpty
+                renderValue={(value) => value || 'All levels'}
+                inputProps={{ 'aria-label': 'Filter by level' }}
+              >
+                <MenuItem value="">All levels</MenuItem>
+                <MenuItem value="Undergraduate">Undergraduate</MenuItem>
+                <MenuItem value="Postgraduate">Postgraduate</MenuItem>
+                <MenuItem value="Certificate">Certificate</MenuItem>
+                <MenuItem value="Diploma">Diploma</MenuItem>
+                <MenuItem value="Postgraduate Diploma">Postgraduate Diploma</MenuItem>
+                <MenuItem value="Professional">Professional</MenuItem>
+                <MenuItem value="School / Open Board">School / Open Board</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl fullWidth size="small" sx={filterSelectStyles}>
+              <Select
+                value={modeFilter}
+                onChange={(event) => setModeFilter(event.target.value)}
+                displayEmpty
+                renderValue={(value) => value || 'All study modes'}
+                inputProps={{ 'aria-label': 'Filter by mode' }}
+              >
+                <MenuItem value="">All study modes</MenuItem>
+                <MenuItem value="Regular">Regular</MenuItem>
+                <MenuItem value="Online / Distance">Online / Distance</MenuItem>
+                <MenuItem value="Open Schooling">Open Schooling</MenuItem>
+                <MenuItem value="Ask for Availability">Ask for Availability</MenuItem>
+              </Select>
+            </FormControl>
             <button
               onClick={resetFilters}
               type="button"
